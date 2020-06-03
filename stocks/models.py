@@ -1,3 +1,9 @@
 from django.db import models
 
-# Create your models here.
+
+class Stock(models.Model):
+    class Meta:
+        db_table = 'stock'
+
+    title = models.TextField()
+    stock_count = models.IntegerField()
