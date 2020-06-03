@@ -3,8 +3,10 @@ from rest_framework import routers
 
 from stocks.views import StockViewSet, index
 
-router = routers.DefoultRouter()
-router.register(r'stock', StockViewSet)
+app_name = 'stocks'
+
+router = routers.DefaultRouter()
+router.register(r'stocks', StockViewSet)
 
 urlpatterns = [
     url(r'api/', include(router.urls)),
