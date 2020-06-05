@@ -16,7 +16,7 @@ Vue.component("demo-grid", {
         };
     },
     computed: {
-        filteredHeroes: function () {
+        filteredData: function () {
             var sortKey = this.sortKey;
             var filterKey = this.filterKey && this.filterKey.toLowerCase();
             var order = this.sortOrders[sortKey] || 1;
@@ -58,17 +58,15 @@ Vue.component("demo-grid", {
 var demo = new Vue({
     el: '#demo',
     data: {
-        serchQuery: '',
         gridColumns: ['id', 'title', 'stock_count'],
         gridData: []
     },
-    create: function () {
-        var self = this
-        axios.get('/qiita/api/stock/')
+    created: function () {
+        axios.get('/qiita/api/stocks/')
             .then(function (response) {
-                for (let i = 0; i < response.data.results.length; i++) {
-                    self.gridData.push(response.data.results[i]);
+                for (var i = 0; i < response.data.results.length; i++) {
+                    this.gridData.push(response.data.results[i]);
                 }
             });
     }
-})
+});

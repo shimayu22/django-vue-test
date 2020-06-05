@@ -9,9 +9,7 @@ from stocks.serializer import StockSerializer
 
 
 def index(_):
-    html = open(
-        os.path.join(settings.STATICFILES_DIRS[0], "vue_grid.html")
-    ).read()
+    html = open(os.path.join(settings.STATICFILES_DIRS[0], "vue_grid.html"), 'r', encoding="utf-8").read()
 
     return HttpResponse(html)
 
